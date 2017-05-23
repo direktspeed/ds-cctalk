@@ -18,7 +18,7 @@ class CCBus {
     this.config = config || {};
     this.config.timeout = this.config.timeout || 1000;
     this.config.src = this.config.src || 1;
-    console.log('CONFIG In', config, ,'CONFIG Out',this.config);
+    console.log('CONFIG In:', config, ' -> CONFIG Out: ',this.config);
     this.parserBuffer = new Uint8Array(255+5);
     this.parserBuffer.cursor = 0;
 
