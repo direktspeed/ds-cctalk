@@ -1,4 +1,6 @@
 # ds-cctalk
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/direktspeed/ds-cctalk.svg)](https://greenkeeper.io/)
 CCTalk Node.js Implamentation Classes
 ```
 const cc = require('ds-cctalk')
