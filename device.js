@@ -53,7 +53,7 @@ class CCDevice extends EventEmitter {
       downloadCalibrationInfo: 182,
       requestThermistorReading: 173,
       requestBaseYear: 170,
-      requestAddressMode: 169;
+      requestAddressMode: 169,
       requestCommsRevision: 4,
       clearCommsStatusVariables: 3,
       requestCommsStatusVariables: 2,
