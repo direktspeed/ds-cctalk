@@ -111,11 +111,13 @@ class CCBus {
   sendRawCommand(command) {
     // Check if Command is already instance of CCCommand
     return new Promise((resolve, reject) => {
-      debug('CCBus::sendCommandRaw')(command);
-      debug('CCBus::sendCommandRaw::Set')('command.src:', command.src, '->', this.config.src);
-      command.src = this.config.src;
+      if (!command.src === this.config.src) {
+        debug('CCBus::sendCommandRaw::Set')('command.src:', command.src, '->', this.config.src);
+        command.src = this.config.src;
+      }
+      debug('CCBus::sendCommandRaw')(command.toBuffer());
       this.ser.write(command.toBuffer(), (err) => {
-        debug('CCBus::sendCommandRaw')('Result: ', (!err));
+        debug('CCBus::sendCommandRaw')('Recived: ', (!err));
         if(err){
           debug('CCBus::sendCommandRaw::Error')(err);
           reject(err);
@@ -128,6 +130,26 @@ class CCBus {
     // Send command with promised reply
     // If you use this function, use it exclusively and don't forget to call _onData() if you override onData()
     debug('CCBus::sendCommand')(command);
+    debug('CCBus::sndCommandInterp')(new CCCommand(command);
+    var promise = timeout(new Promise((resolve, reject )=> {
+      debug('CCBus::sendCommandPromise')('exec: ',command);
+      command.resolve = resolve;
+      command.reject = reject;
+    }), this.config.timeout);
+
+    // use the command chain to send command only when previous commands have finished
+    // this way replies can be correctly attributed to commands
+    this.commandChainPromise = this.commandChainPromise
+      .then(() => { debug('CCBus::')('commandChainPromise'); this.lastCommand = command; return this.sendRawCommand(command); })
+      .then(() => promise)
+      .catch((e) => debug('CCBus::Error::')(e));
+    return promise;
+  },
+  sndCmd(command) {
+    // Check if Command is already instance of CCCommand
+    // Send command with promised reply
+    // If you use this function, use it exclusively and don't forget to call _onData() if you override onData()
+    debug('CCBus::sndCommand')(new CCCommand(command);
     var promise = timeout(new Promise((resolve, reject )=> {
       debug('CCBus::sendCommandPromise')('exec: ',command);
       command.resolve = resolve;
@@ -144,3 +166,8 @@ class CCBus {
   }
 }
 module.exports = CCBus;
+
+
+
+const bnd = require('./banknotedetector');
+const bn = new bnd('/dev/ttyUSB0', { dest: 40, timeout: 1000 });
