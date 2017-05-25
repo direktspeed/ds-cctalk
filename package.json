@@ -1,6 +1,6 @@
 {
   "name": "ds-cctalk",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "CCTalk Node.js Implamentation Classes",
   "keywords": [
     "serial",
