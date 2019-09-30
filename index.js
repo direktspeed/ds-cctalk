@@ -1,2 +1,2 @@
-const cctalk = require('node-cctal')
+const cctalk = require('node-cctalk')
 module.exports = cctalk;
