@@ -1,5 +1,13 @@
-# ds-cctalk
+# (deprecated) moved ds-cctalk
 CCTalk Node.js Implamentation Classes
+
+## Importent 
+Please don't use this the active Maintained version is https://github.com/direktspeed/node-cctalk
+
+```
+npm i node-cctalk
+```
+
 ```
 const cc = require('ds-cctalk')
 
